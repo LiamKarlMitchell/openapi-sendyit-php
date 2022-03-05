@@ -1,0 +1,1958 @@
+openapi: 3.0.0
+servers:
+  - url: //api.sendyit.com/v2/
+    description: ''
+    variables: {}
+info:
+  version: de1aa17a-d33f-4aca-9dc5-98822ff83a8f
+  title: Sendy Public API
+  description: |2
+
+      In order to get started with Sendy Public API, you will need to first <a href="https://app.sendyit.com/auth/sign_up">register a business account</a>.<br>
+      Thereafter, <a href="https://app.sendyit.com/auth">login</a> to the Sendy app, create a password and generate a personal access token for API authentication.<br><br>
+      This guide details interfaces that allow you to integrate your own apps with Sendy's services.<br>
+  termsOfService: ''
+  contact: {}
+  license:
+    name: ''
+paths:
+  /tokens/generate:
+    post:
+      summary: Generate tokens
+      description: Generates access tokens authorising a corporate account to access the Sendy API.
+      operationId: Generatetokens
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
+      responses:
+        '200':
+          description: Response for successful request processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                data:
+                  type: bearer
+                  token: b2cf792438cb7a8bff74fd73e75441capU07/mbdn5pagdwDKT2kh2GzbuIopFN7veTckYGsKJIb5MaVtRofKSX7Fmot3LDR
+                message: Tokens generated successfully
+        '401':
+          description: Response for failed authentication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+              example:
+                status: false
+                message: Cannot verify user password
+        '422':
+          description: Response for failed validation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+              example:
+                status: false
+                message: eu aliqua sed aute
+      requestBody:
+        description: Generates access tokens authorising a corporate account to access the Sendy API.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                email: Lorem quis
+                password: anim esse
+            example: |-
+              {
+                  "email": "Lorem quis",
+                  "password": "anim esse"
+              }
+      tags:
+        - tokens
+  /tokens/revoke:
+    post:
+      summary: Revoke tokens
+      description: Revokes token for the authenticated user and expires it, ensuring it can no longer be used to access the API.
+      operationId: Revoketokens
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: Response for successful request processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                data:
+                  type: bearer
+                  token: b2cf792438cb7a8bff74fd73e75441capU07/mbdn5pagdwDKT2kh2GzbuIopFN7veTckYGsKJIb5MaVtRofKSX7Fmot3LDR
+                message: Tokens generated successfully
+        '401':
+          description: Response for failed authentication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+              example:
+                status: false
+                message: Cannot verify user password
+        '422':
+          description: Response for failed validation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+              example:
+                status: false
+                message: eu aliqua sed aute
+      requestBody:
+        description: Revokes token for the authenticated user and expires it, ensuring it can no longer be used to access the API.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                email: Lorem quis
+                password: anim esse
+            example: |-
+              {
+                  "email": "Lorem quis",
+                  "password": "anim esse"
+              }
+      tags:
+        - tokens
+  /config/handshakes:
+    get:
+      summary: Get handshakes configurations request
+      description: Requests for a users handshake configurations and returns available handshake configurations.
+      operationId: Gethandshakesconfigurationsrequest
+      parameters: []
+      responses:
+        '200':
+          description: The response values for the verification endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                reasons: aute eiusmod dolor esse quis
+                generate: http://exampleURL.com
+                verify: http://exampleURL.com
+        '401':
+          description: The specified resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+              example:
+                status: false
+                message: irure in anim aliqua
+        '422':
+          description: Validation failed and the request was not processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+              example:
+                status: false
+                message: exercitation
+      tags:
+        - config/handshakes
+    post:
+      summary: Generate handshake configuration
+      description: Generate a handshake configurations for a user
+      operationId: Generatehandshakeconfiguration
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: The response values for the verification endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                reasons: reprehenderit deserunt non
+        '401':
+          description: The specified resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+              example:
+                status: false
+                message: irure in anim aliqua
+        '422':
+          description: Validation failed and the request was not processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+              example:
+                status: false
+                message: exercitation
+      requestBody:
+        description: Generate a handshake configurations for a user
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                generate: http://exampleURL.com
+                verify: http://exampleURL.com
+            example: |-
+              {
+                  "generate": "http://exampleURL.com",
+                  "verify": "http://exampleURL.com"
+              }
+      tags:
+        - config/handshakes
+    put:
+      summary: Update generated handshake configuration
+      description: Edit an existing generated handshake configuration for a user
+      operationId: Updategeneratedhandshakeconfiguration
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: The response values for the verification endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                reasons: updated Successfully
+        '401':
+          description: The specified resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+              example:
+                status: false
+                message: irure in anim aliqua
+        '422':
+          description: Validation failed and the request was not processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+              example:
+                status: false
+                message: exercitation
+      requestBody:
+        description: Edit an existing generated handshake configuration for a user
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                generate: http://exampleURL.com
+                verify: http://exampleURL.com
+            example: |-
+              {
+                  "generate": "http://exampleURL.com",
+                  "verify": "http://exampleURL.com"
+              }
+      tags:
+        - config/handshakes
+  /orders/{orderNumber}:
+    get:
+      summary: Track an order
+      description: Get details about an order which include tracking details, status, rider details et al.
+      operationId: Trackanorder
+      parameters:
+        - $ref: '#/components/parameters/orderNumber'
+      responses:
+        '200':
+          description: The response values for the verification endpoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                data:
+                  id: 1367525
+                  rider:
+                    id: 17461
+                    name: Maxwell kimaiyo
+                    phone: '+254795393894'
+                    number_plate: KBC 123K
+                    vehicle_make: Mitsubishi Canter
+        '500':
+          description: Unexpected error while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+              example:
+                status: false
+                message: nulla laborum
+      tags:
+        - '{order Number}'
+  /orders/{orderNumber}/order-paths:
+    get:
+      summary: View items/details of an order path
+      description: View the items in an order waypoint(s) or path of a given order
+      operationId: Viewitems/detailsofanorderpath
+      parameters:
+        - name: orderNumber
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: nisi esse ut ipsum
+          description: (Required) A unique string idenfiying the order number
+      responses:
+        '200':
+          description: The response values for the verification endpoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                order_no: AS137J382-9X7
+                status: true
+                data:
+                  path:
+                    - coordinates: '-1.3085878394373143,36.85659340637921'
+                      country_code: KE
+                      locality:
+                        coordinates: '-1.308854,36.856487'
+                        name: Industrial Area
+                      more:
+                        Address: 138 Likoni Rd, Nairobi, Kenya
+                        Estate: Not indicated
+                        FlatName: NTSA Likoni Road Inspection Centre
+                        HouseDoor: Not indicated
+                        Label: ''
+                        Otherdescription: ''
+                        Road: Likoni Road
+                        Typed: ROOFTOP
+                        Vicinity: Likoni Road
+                        landmark: No landmark
+                        place_idcustom: ChIJE8a9kXcRLxgRtFd9SIwV2ZQ
+                        viewport:
+                          northeast:
+                            lat: in
+                            lng: sit ut
+                          southwest:
+                            lat: amet
+                            lng: elit aute
+                      name: NTSA Likoni Road Inspection Centre
+                      notes: aliqua Excepteur nulla sed
+                      notify: false
+                      order_items:
+                        - ref_no: PKG1082198
+                          checklist_items:
+                            - item_id: ITM82198
+                              display_name: 2KG Soko Maize Flour
+                              quantity: 12
+                              display_img_link: https://s3.com/sff
+                              description: Ugali tings
+                            - item_id: ITM82198
+                              display_name: 2KG Soko Maize Flour
+                              quantity: 12
+                              display_img_link: https://s3.com/sff
+                              description: Ugali tings
+                        - ref_no: PKG1082198
+                          checklist_items:
+                            - item_id: ITM82198
+                              display_name: 2KG Soko Maize Flour
+                              quantity: 12
+                              display_img_link: https://s3.com/sff
+                              description: Ugali tings
+                            - item_id: ITM82198
+                              display_name: 2KG Soko Maize Flour
+                              quantity: 12
+                              display_img_link: https://s3.com/sff
+                              description: Ugali tings
+                      recipient_name: ut esse enim cupidata
+                      recipient_phone: est commodo officia L
+                      reference_number: qui
+                      return: Lorem
+                      status: eu id
+                      waypoint_details_status: false
+                      waypoint_id: fe0e752f-d587-4a07-bdc2-1bd99d3551c0
+                      waypoint_type: PICKUP
+                      is_return: false
+                    - coordinates: '-1.3085878394373143,36.85659340637921'
+                      country_code: KE
+                      locality:
+                        coordinates: '-1.308854,36.856487'
+                        name: Industrial Area
+                      more:
+                        Address: 138 Likoni Rd, Nairobi, Kenya
+                        Estate: Not indicated
+                        FlatName: NTSA Likoni Road Inspection Centre
+                        HouseDoor: Not indicated
+                        Label: ''
+                        Otherdescription: ''
+                        Road: Likoni Road
+                        Typed: ROOFTOP
+                        Vicinity: Likoni Road
+                        landmark: No landmark
+                        place_idcustom: ChIJE8a9kXcRLxgRtFd9SIwV2ZQ
+                        viewport:
+                          northeast:
+                            lat: velit mollit pariatur consequat ullamco
+                            lng: voluptate officia est aliqua
+                          southwest:
+                            lat: officia velit reprehenderit
+                            lng: Ut consectetur
+                      name: NTSA Likoni Road Inspection Centre
+                      notes: ullamco in
+                      notify: false
+                      order_items:
+                        - ref_no: PKG1082198
+                          checklist_items:
+                            - item_id: ITM82198
+                              display_name: 2KG Soko Maize Flour
+                              quantity: 12
+                              display_img_link: https://s3.com/sff
+                              description: Ugali tings
+                            - item_id: ITM82198
+                              display_name: 2KG Soko Maize Flour
+                              quantity: 12
+                              display_img_link: https://s3.com/sff
+                              description: Ugali tings
+                        - ref_no: PKG1082198
+                          checklist_items:
+                            - item_id: ITM82198
+                              display_name: 2KG Soko Maize Flour
+                              quantity: 12
+                              display_img_link: https://s3.com/sff
+                              description: Ugali tings
+                            - item_id: ITM82198
+                              display_name: 2KG Soko Maize Flour
+                              quantity: 12
+                              display_img_link: https://s3.com/sff
+                              description: Ugali tings
+                      recipient_name: Duis
+                      recipient_phone: non
+                      reference_number: quis
+                      return: do velit consectetur aliquip
+                      status: exercitation nulla nostrud ea
+                      waypoint_details_status: false
+                      waypoint_id: fe0e752f-d587-4a07-bdc2-1bd99d3551c0
+                      waypoint_type: PICKUP
+                      is_return: false
+                  route:
+                    - magna irure
+                    - velit elit ut proident
+        '422':
+          description: Validation failed during request processing and details were not saved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+              example:
+                status: true
+                message: 'enim adipisicing '
+        '500':
+          description: Unexpected error while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+              example:
+                status: true
+                error: {}
+                message: in esse tempor ut
+      tags:
+        - '{order Number}'
+  /orders/{orderNumber}/cancel:
+    post:
+      summary: Cancel an order
+      description: Facilitates cancellation of orders. Orders can only be cancelled if they are NOT in transit, NOT delivered or, naturally, NOT already cancelled
+      operationId: Cancelanorder
+      parameters:
+        - name: orderNumber
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: nisi esse ut ipsum
+          description: (Required) Unique string identifier for the order.
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: The response values for the verification endpoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: false
+                message: u
+        '422':
+          description: Validation failed during request processing and details were not saved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/422'
+              example:
+                - message: ex Ut commodo
+                  field: consequat sed
+                  validation: velit ea
+                - message: tempor aliqua reprehenderit
+                  field: Excepteur amet adipisicing anim
+                  validation: do eu voluptate Ut
+        '500':
+          description: Unexpected error while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+              example:
+                status: false
+                message: {}
+      requestBody:
+        description: Facilitates cancellation of orders. Orders can only be cancelled if they are NOT in transit, NOT delivered or, naturally, NOT already cancelled
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                cancel_reason_id: -17258550
+                reason_description: ad
+            example: |-
+              {
+                  "cancel_reason_id": -17258550,
+                  "reason_description": "ad"
+              }
+      tags:
+        - '{order Number}'
+  /orders:
+    post:
+      summary: Confirm an order
+      description: Facilitates confirmation of an order after getting a quotation from the price request endpoint, using the pricing UUIDs
+      operationId: Confirmanorder
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: The response values for the verification endpoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: false
+                message: Order placed successfully
+                data:
+                  order_no: AS137J382-9X7
+                  pricing_uuid: {}
+                  tracking_link: https://webapptest.sendyit.com/external/tracking/AS137J382-9X7
+                  details:
+                    ecommerce_order: kiota_KCON-1136DBJ50
+                  time_predictions:
+                    eta: '2021-10-4 12:10:45'
+        '422':
+          description: Validation failed during request processing and details were not saved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+              example:
+                status: false
+                message: aliquip officia sint qui
+        '500':
+          description: Unexpected error while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+              example:
+                status: true
+                error: {}
+                message: in esse tempor ut
+      requestBody:
+        description: Facilitates confirmation of an order after getting a quotation from the price request endpoint, using the pricing UUIDs
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                pricing_uuid: 0a9abba2-8696-430f-9b64-8f6fd1e57b10
+                carrier_type: -22544923
+                payment_option: 1
+                destination_paid_status: false
+                note: Pick the items at the reception
+                schedule_time: '2021-10-4 12:10:45'
+                rider_phone: '+254717266700'
+                waypoint_instructions:
+                  - recipient_phone: '+254792543163'
+                    waypoint_id: d67dbff1-4d57-4266-9c39-481c2d9c76eq
+                    order_items:
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                    notes: 'Please call Philip +254717266700 when you get to the pickup location. ADDITIONAL NOTES: Call Liz'
+                  - recipient_phone: '+254792543163'
+                    waypoint_id: d67dbff1-4d57-4266-9c39-481c2d9c76eq
+                    order_items:
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                    notes: 'Please call Philip +254717266700 when you get to the pickup location. ADDITIONAL NOTES: Call Liz'
+            example: |-
+              {
+                  "pricing_uuid": "0a9abba2-8696-430f-9b64-8f6fd1e57b10",
+                  "carrier_type": -22544923,
+                  "payment_option": 1,
+                  "destination_paid_status": false,
+                  "note": "Pick the items at the reception",
+                  "schedule_time": "2021-10-4 12:10:45",
+                  "rider_phone": "+254717266700",
+                  "waypoint_instructions": [
+                      {
+                          "recipient_phone": "+254792543163",
+                          "waypoint_id": "d67dbff1-4d57-4266-9c39-481c2d9c76eq",
+                          "order_items": [
+                              {
+                                  "ref_no": "PKG1082198",
+                                  "checklist_items": [
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      },
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "ref_no": "PKG1082198",
+                                  "checklist_items": [
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      },
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "notes": "Please call Philip +254717266700 when you get to the pickup location. ADDITIONAL NOTES: Call Liz"
+                      },
+                      {
+                          "recipient_phone": "+254792543163",
+                          "waypoint_id": "d67dbff1-4d57-4266-9c39-481c2d9c76eq",
+                          "order_items": [
+                              {
+                                  "ref_no": "PKG1082198",
+                                  "checklist_items": [
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      },
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "ref_no": "PKG1082198",
+                                  "checklist_items": [
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      },
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "notes": "Please call Philip +254717266700 when you get to the pickup location. ADDITIONAL NOTES: Call Liz"
+                      }
+                  ]
+              }
+      tags:
+        - '{order Number}'
+  /orders/order-paths:
+    put:
+      summary: Change items/details of an order path
+      description: change the items in an order waypoint(s) or path of a given order
+      operationId: Changeitems/detailsofanorderpath
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: The response values for the verification endpoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                reason: exercitation do ut
+                path:
+                  - coordinates: '-1.24138,36.889166'
+                    country_code: KE
+                    locality:
+                      coordinates: '-1.24138,36.889166'
+                      name: Nairobi
+                    more:
+                      Estate: Not indicated
+                      FlatName: Sendy Office, Marsabit Plaza 3rd Floor
+                      place_idcustom: ChIJhbD6i3EaLxgR4oVQaZO9l-M
+                      Label: ''
+                      HouseDoor: Not indicated
+                      Otherdescription: ''
+                      Typed: Sendy Office, Marsabit Plaza 3rd Floor
+                      Vicinity: Ngong Road, Nairobi
+                      Address: Ngong Rd Maziwa Nairobi
+                      landmark: No landmark
+                      viewport:
+                        northeast:
+                          lat: veniam sunt
+                          lng: magna qui labore est dolor
+                        southwest:
+                          lat: elit sed
+                          lng: exer
+                      Road: Marsabit Plaza, Ngong Road
+                    name: Roy Transmotors Ltd, Nairobi, Kenya
+                    notes: HUMAN READABLE INSTRUCTONS
+                    notify: true
+                    handshake: OTP
+                    order_items:
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                    recipient_name: aliquip irure
+                    recipient_phone: dolor labore
+                    recipient_number: cupidatat c
+                    waypoint_id: 02d024fd-6077-4d8b-9974-774ff289af40
+                    visited: false
+                    waypoint_details_status: false
+                    waypoint_type: PICKUP
+                    return:
+                      status: false
+                      waypoint_ids:
+                        - waypoint_id21
+                        - waypoint_id21
+                  - coordinates: '-1.24138,36.889166'
+                    country_code: KE
+                    locality:
+                      coordinates: '-1.24138,36.889166'
+                      name: Nairobi
+                    more:
+                      Estate: Not indicated
+                      FlatName: Sendy Office, Marsabit Plaza 3rd Floor
+                      place_idcustom: ChIJhbD6i3EaLxgR4oVQaZO9l-M
+                      Label: ''
+                      HouseDoor: Not indicated
+                      Otherdescription: ''
+                      Typed: Sendy Office, Marsabit Plaza 3rd Floor
+                      Vicinity: Ngong Road, Nairobi
+                      Address: Ngong Rd Maziwa Nairobi
+                      landmark: No landmark
+                      viewport:
+                        northeast:
+                          lat: ad aliquip est tempor
+                          lng: occaecat magna cupidatat
+                        southwest:
+                          lat: dolor velit labore dolore
+                          lng: nisi ut enim eu in
+                      Road: Marsabit Plaza, Ngong Road
+                    name: Roy Transmotors Ltd, Nairobi, Kenya
+                    notes: HUMAN READABLE INSTRUCTONS
+                    notify: true
+                    handshake: OTP
+                    order_items:
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                    recipient_name: par
+                    recipient_phone: proident pariatur
+                    recipient_number: sunt nulla in
+                    waypoint_id: 02d024fd-6077-4d8b-9974-774ff289af40
+                    visited: true
+                    waypoint_details_status: false
+                    waypoint_type: PICKUP
+                    return:
+                      status: true
+                      waypoint_ids:
+                        - waypoint_id21
+                        - waypoint_id21
+        '422':
+          description: Validation failed during request processing and details were not saved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+              example:
+                status: true
+                message: 'enim adipisicing '
+        '500':
+          description: Unexpected error while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+              example:
+                status: true
+                error: {}
+                message: in esse tempor ut
+      requestBody:
+        description: change the items in an order waypoint(s) or path of a given order
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                order_no: ASKD6GBC-D8U
+                route: []
+                waypoint_id: 02d024fd-6077-4d8b-9974-774ff289af40
+                waypoint_instructions:
+                  - lng: cillum
+                    lat: in sed
+                    location_name: Sendy Office, Marsabit Plaza 3rd Floor
+                    waypoint_type: PICKUP
+                    order_items:
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                    handshake: SIGNATURE
+                    recipient_name: John Doe
+                    recipient_phone: '+254792543163'
+                    notes: 'Please call Philip +254717266700 when you get to the pickup location. ADDITIONAL NOTES: Call Liz'
+                    notify: true
+                  - lng: velit elit
+                    lat: exercitation dolor voluptate
+                    location_name: Sendy Office, Marsabit Plaza 3rd Floor
+                    waypoint_type: DELIVERY
+                    order_items:
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                      - ref_no: PKG1082198
+                        checklist_items:
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                          - item_id: ITM82198
+                            display_name: 2KG Soko Maize Flour
+                            quantity: 12
+                            display_img_link: https://s3.com/sff
+                            description: Ugali tings
+                    handshake: SIGNATURE
+                    recipient_name: John Doe
+                    recipient_phone: '+254792543163'
+                    notes: 'Please call Philip +254717266700 when you get to the pickup location. ADDITIONAL NOTES: Call Liz'
+                    notify: true
+            example: |-
+              {
+                  "order_no": "ASKD6GBC-D8U",
+                  "route": [],
+                  "waypoint_id": "02d024fd-6077-4d8b-9974-774ff289af40",
+                  "waypoint_instructions": [
+                      {
+                          "lng": "cillum",
+                          "lat": "in sed",
+                          "location_name": "Sendy Office, Marsabit Plaza 3rd Floor",
+                          "waypoint_type": "PICKUP",
+                          "order_items": [
+                              {
+                                  "ref_no": "PKG1082198",
+                                  "checklist_items": [
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      },
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "ref_no": "PKG1082198",
+                                  "checklist_items": [
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      },
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "handshake": "SIGNATURE",
+                          "recipient_name": "John Doe",
+                          "recipient_phone": "+254792543163",
+                          "notes": "Please call Philip +254717266700 when you get to the pickup location. ADDITIONAL NOTES: Call Liz",
+                          "notify": true
+                      },
+                      {
+                          "lng": "velit elit",
+                          "lat": "exercitation dolor voluptate",
+                          "location_name": "Sendy Office, Marsabit Plaza 3rd Floor",
+                          "waypoint_type": "DELIVERY",
+                          "order_items": [
+                              {
+                                  "ref_no": "PKG1082198",
+                                  "checklist_items": [
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      },
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "ref_no": "PKG1082198",
+                                  "checklist_items": [
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      },
+                                      {
+                                          "item_id": "ITM82198",
+                                          "display_name": "2KG Soko Maize Flour",
+                                          "quantity": 12,
+                                          "display_img_link": "https://s3.com/sff",
+                                          "description": "Ugali tings"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "handshake": "SIGNATURE",
+                          "recipient_name": "John Doe",
+                          "recipient_phone": "+254792543163",
+                          "notes": "Please call Philip +254717266700 when you get to the pickup location. ADDITIONAL NOTES: Call Liz",
+                          "notify": true
+                      }
+                  ]
+              }
+      tags:
+        - '{order Number}'
+  /webhooks:
+    get:
+      summary: Get webhooks
+      description: Retrieve a list of all the webhooks configured by your application for use with the API.
+      operationId: Getwebhooks
+      parameters:
+        - $ref: '#/components/parameters/status'
+      responses:
+        '200':
+          description: Retrieve configuration for handshake to be initiated at every waypoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: false
+                data:
+                  - id: 1
+                    webhook_url: http://apitest.sendyit.com/v2/webhook
+                    status: in sed Ut
+                    webhook_event:
+                      id: 1
+                      name: Delivery Canceled
+                  - id: 1
+                    webhook_url: http://apitest.sendyit.com/v2/webhook
+                    status: aute exercitation tempor ea
+                    webhook_event:
+                      id: 1
+                      name: Delivery Canceled
+        '500':
+          description: Unexpected error while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+              example:
+                status: false
+                error: {}
+                message: deserunt dolore
+      tags:
+        - webhooks
+    post:
+      summary: Add a webhook
+      description: Add the webhooks configured by your application for use with the API.
+      operationId: Addawebhook
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+        '201':
+          description: Indicates whether the action was processed successfully or not
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/201'
+              example:
+                status: false
+                message: aute ad adipisicing dolore
+                data:
+                  id: 1
+                  webhook_url: http://apitest.sendyit.com/v2/webhook
+                  status: enim veniam do conse
+                  webhook_event:
+                    id: 1
+                    name: Delivery Canceled
+        '404':
+          description: Indicates that the request was not completed because of an invalid webhook event ID
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/404'
+              example:
+                - status: true
+                  message: in cupi
+                - status: true
+                  message: irure aliqua sed reprehenderit
+        '422':
+          description: Validation failed during request processing and details were not saved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/422'
+              example:
+                - message: ex Ut commodo
+                  field: consequat sed
+                  validation: velit ea
+                - message: tempor aliqua reprehenderit
+                  field: Excepteur amet adipisicing anim
+                  validation: do eu voluptate Ut
+        '500':
+          description: Unexpected error while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+              example:
+                status: false
+                message: {}
+      requestBody:
+        description: Add the webhooks configured by your application for use with the API.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                webhook_event_id: 2
+                webhook_log_url: http://example-server.com/log
+            example: |-
+              {
+                  "webhook_event_id": 2,
+                  "webhook_log_url": "http://example-server.com/log"
+              }
+      tags:
+        - webhooks
+    patch:
+      summary: Update a webhook
+      description: Facilitates the updating of a configured webhook.
+      operationId: Updateawebhook
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: Indicates whether the action was processed successfully or not
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: false
+                message: aute ad adipisicing dolore
+                data:
+                  id: 1
+                  webhook_url: http://apitest.sendyit.com/v2/webhook
+                  status: enim veniam do conse
+                  webhook_event:
+                    id: 1
+                    name: Delivery Canceled
+        '422':
+          description: Validation failed during request processing and details were not saved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/422'
+              example:
+                - message: ex Ut commodo
+                  field: consequat sed
+                  validation: velit ea
+                - message: tempor aliqua reprehenderit
+                  field: Excepteur amet adipisicing anim
+                  validation: do eu voluptate Ut
+        '500':
+          description: Unexpected error while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+              example:
+                status: false
+                message: {}
+      requestBody:
+        description: Facilitates the updating of a configured webhook.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                webhook_log_url: nul
+                webhook_event_id: 42493354
+                status: true
+            example: |-
+              {
+                  "webhook_log_url": "nul",
+                  "webhook_event_id": 42493354,
+                  "status": true
+              }
+      tags:
+        - webhooks
+  /passwords/generate:
+    post:
+      summary: Generate password
+      description: Create and store a new password for a corporate account.
+      operationId: Generatepassword
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: Response for successful request processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                message: Password saved successfully
+        '422':
+          description: Response for failed validation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+              example:
+                status: false
+                message: eu aliqua sed aute
+      requestBody:
+        description: Create and store a new password for a corporate account.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                cop_id: 35510261
+                cop_user_id: 2449311
+                password: reprehende
+                password_confirmation: tempor Duis Ut
+            example: |-
+              {
+                  "cop_id": 35510261,
+                  "cop_user_id": 2449311,
+                  "password": "reprehende",
+                  "password_confirmation": "tempor Duis Ut"
+              }
+      tags:
+        - webhooks
+  /cancel-reasons:
+    get:
+      summary: Get cancel reasons
+      description: Returns a list of all configured cancel reasons from active persistence.
+      operationId: Getcancelreasons
+      parameters: []
+      responses:
+        '200':
+          description: The response values for the verification endpoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: false
+                data:
+                  id: -93372798
+                  description: veniam
+        '500':
+          description: Unexpected error while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+              example:
+                status: true
+                error: {}
+                message: in esse tempor ut
+      tags:
+        - webhooks
+  /settings:
+    get:
+      summary: Get settings
+      description: Returns a list of settings & configurations necessary to intergate into the API.
+      operationId: Getsettings
+      parameters: []
+      responses:
+        '200':
+          description: The response values for the verification endpoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                data: {}
+        '401':
+          description: The specified resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+              example:
+                status: false
+                message: irure in anim aliqua
+      tags:
+        - webhooks
+  /vendor-types:
+    get:
+      summary: Get vendor types
+      description: Returns a list of all configured vendor types from active persistence.
+      operationId: Getvendortypes
+      parameters: []
+      responses:
+        '200':
+          description: The response values for the verification endpoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                data:
+                  - id: 1
+                    name: bike
+                  - id: 1
+                    name: bike
+        '401':
+          description: The specified resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+              example:
+                status: false
+                message: irure in anim aliqua
+      tags:
+        - webhooks
+  /price-request:
+    post:
+      summary: Price request
+      description: Requests for an order's price quotations and returns available pricing tiers given pickup and delivery coordinates
+      operationId: Pricerequest
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: The response values for the verification endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                data:
+                  city_id: 1
+                  carrier_type: 2
+                  cop_type_id: 3
+                  currency: KES
+                  client_id: 669
+                  cost: 0
+                  path:
+                    - name: 2nd Avenue,14th Street, Eastleigh
+                      waypoint_id: aed2b980-ce2f-4b4f-be7f-6fe01ead9f5c
+                      waypoint_type: PICKUP
+                      coordinates: '-1.280794,36.8520048'
+                      waypoint_details_status: false
+                      country_code: KE
+                      city_name: Nairobi County
+                      locality: {}
+                      more: {}
+                    - name: 2nd Avenue,14th Street, Eastleigh
+                      waypoint_id: aed2b980-ce2f-4b4f-be7f-6fe01ead9f5c
+                      waypoint_type: PICKUP
+                      coordinates: '-1.280794,36.8520048'
+                      waypoint_details_status: false
+                      country_code: KE
+                      city_name: Nairobi County
+                      locality: {}
+                      more: {}
+                  return_distance: 15.36 km
+                  return_distance_read: 16
+                  return_cost: 0
+                  distance: 14.94 km
+                  distance_read: 15
+                  duration: 36 mins
+                  duration_read: 36
+                  user_id: 11418
+                  economy_price_tiers:
+                    - tier_group: large
+                      tier_name: large
+                      price_tiers:
+                        - id: 0a9abba2-8696-430f-9b64-8f6fd1e57b10
+                          vendor_id: 20
+                          vendor_name: 28T Truck
+                          vendor_description: ''
+                          tier_description: commodo officia
+                          tier_name: direct
+                          tier_tag: expresstier
+                          tier_sub_title: Save time!
+                          status: false
+                          customer_eta: '2021-09-20 14:49:40'
+                          eta": 2700
+                          price_type": ''
+                          cost: 928
+                          vat_amount: 128
+                          loader_unit_cost: 0
+                          price_variance: 0
+                          return_cost: 1624
+                          return_cost_vat_amount: 224
+                          discountAmount: 0
+                          currency: KES
+                          best_option: false
+                          available_options:
+                            flat_bed: false
+                            refrigerated: false
+                          fixed_cost: true
+                          edit_config:
+                            change_pickup: false
+                            add_pickup: false
+                            change_drop_off: false
+                            add_drop_off: false
+                            change_notes: false
+                        - id: 0a9abba2-8696-430f-9b64-8f6fd1e57b10
+                          vendor_id: 20
+                          vendor_name: 28T Truck
+                          vendor_description: ''
+                          tier_description: adipisicing in qui nisi
+                          tier_name: direct
+                          tier_tag: expresstier
+                          tier_sub_title: Save time!
+                          status: false
+                          customer_eta: '2021-09-20 14:49:40'
+                          eta": 2700
+                          price_type": ''
+                          cost: 928
+                          vat_amount: 128
+                          loader_unit_cost: 0
+                          price_variance: 0
+                          return_cost: 1624
+                          return_cost_vat_amount: 224
+                          discountAmount: 0
+                          currency: KES
+                          best_option: false
+                          available_options:
+                            flat_bed: false
+                            refrigerated: false
+                          fixed_cost: false
+                          edit_config:
+                            change_pickup: false
+                            add_pickup: false
+                            change_drop_off: false
+                            add_drop_off: false
+                            change_notes: false
+                    - tier_group: large
+                      tier_name: large
+                      price_tiers:
+                        - id: 0a9abba2-8696-430f-9b64-8f6fd1e57b10
+                          vendor_id: 20
+                          vendor_name: 28T Truck
+                          vendor_description: ''
+                          tier_description: officia consectetur dolore ut labore
+                          tier_name: direct
+                          tier_tag: expresstier
+                          tier_sub_title: Save time!
+                          status: false
+                          customer_eta: '2021-09-20 14:49:40'
+                          eta": 2700
+                          price_type": ''
+                          cost: 928
+                          vat_amount: 128
+                          loader_unit_cost: 0
+                          price_variance: 0
+                          return_cost: 1624
+                          return_cost_vat_amount: 224
+                          discountAmount: 0
+                          currency: KES
+                          best_option: false
+                          available_options:
+                            flat_bed: false
+                            refrigerated: false
+                          fixed_cost: true
+                          edit_config:
+                            change_pickup: false
+                            add_pickup: false
+                            change_drop_off: false
+                            add_drop_off: false
+                            change_notes: false
+                        - id: 0a9abba2-8696-430f-9b64-8f6fd1e57b10
+                          vendor_id: 20
+                          vendor_name: 28T Truck
+                          vendor_description: ''
+                          tier_description: ex incididunt
+                          tier_name: direct
+                          tier_tag: expresstier
+                          tier_sub_title: Save time!
+                          status: true
+                          customer_eta: '2021-09-20 14:49:40'
+                          eta": 2700
+                          price_type": ''
+                          cost: 928
+                          vat_amount: 128
+                          loader_unit_cost: 0
+                          price_variance: 0
+                          return_cost: 1624
+                          return_cost_vat_amount: 224
+                          discountAmount: 0
+                          currency: KES
+                          best_option: false
+                          available_options:
+                            flat_bed: false
+                            refrigerated: false
+                          fixed_cost: true
+                          edit_config:
+                            change_pickup: false
+                            add_pickup: false
+                            change_drop_off: false
+                            add_drop_off: false
+                            change_notes: false
+                  fixed_cost: true
+                  status: false
+                  msg: ''
+                  way_points: 1
+                  economy_order_cost: 0
+                  from_details: {}
+                  to_details: {}
+                  from_details_status: true
+                  from_name: 2nd Avenue,14th Street, Eastleigh
+                  to_name: Kawangware 46
+                  to_details_status: false
+                  start_address: Behind Sky Blue Lodge, Eastleigh Second Avenue, Nairobi, Kenya
+                  end_address: Kawangware 46, Nairobi, Kenya
+                  errand_mode: one_way
+                  errand_cost_id: 0
+                  delivery_instructions: {}
+                  delvery_verification: {}
+                  status_code: 200
+                  to: '-1.287068599942412,36.749029183805916'
+                  from: '-1.280794,36.8520048'
+                  insurance_status: false
+                  order_type": 0
+                  is_rerequest: false
+                  license_status: 0
+                  max_rider_orders: 10
+                  is_economy_bike: false
+                  is_economy_runner: false
+                  is_send_customer_receipt: false
+                  is_standard_bike: false
+                  present: false
+                  generated_order_key: ''
+                  tracking_id: ''
+                  order_cop_name: Faith shop
+                  pay_extra_one_way: 0
+                  pay_extra_return: 0
+                  pay_method: 0
+                  payment_method: 0
+                  payment_option: 1
+                  price_type: 1
+                  return: false
+                  vendor_type: 2
+                  vendor_group_id: 2
+                  verify_delivery_location: false
+                  verify_pick_location: true
+                  date_time: ''
+                  ecommerce_order: kiota_KBON-00KBOO7U0V
+                message: nisi do amet veniam
+        '401':
+          description: The specified resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+              example:
+                status: false
+                message: irure in anim aliqua
+        '422':
+          description: Validation failed and the request was not processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+              example:
+                status: false
+                message: exercitation
+      requestBody:
+        description: Requests for an order's price quotations and returns available pricing tiers given pickup and delivery coordinates
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                locations:
+                  - type: PICKUP
+                    lat: reprehenderit et
+                    long: irure proident adipisicing
+                    name: Sendy Office, Marsabit Plaza 3rd Floor
+                    waypoint_id: d67dbff1-4d57-4266-9c39-481c2d9c76eq
+                  - type: PICKUP
+                    lat: dolor consequat commodo incididunt
+                    long: eu o
+                    name: Sendy Office, Marsabit Plaza 3rd Floor
+                    waypoint_id: d67dbff1-4d57-4266-9c39-481c2d9c76eq
+                recipient:
+                  name: in eiusmod
+                  email: ea eu fugiat
+                  phone: in
+                ecommerce_order: KIOTA-KNN76OP
+                order_type_tag: fulfillment_order
+            example: |-
+              {
+                  "locations": [
+                      {
+                          "type": "PICKUP",
+                          "lat": "reprehenderit et",
+                          "long": "irure proident adipisicing",
+                          "name": "Sendy Office, Marsabit Plaza 3rd Floor",
+                          "waypoint_id": "d67dbff1-4d57-4266-9c39-481c2d9c76eq"
+                      },
+                      {
+                          "type": "PICKUP",
+                          "lat": "dolor consequat commodo incididunt",
+                          "long": "eu o",
+                          "name": "Sendy Office, Marsabit Plaza 3rd Floor",
+                          "waypoint_id": "d67dbff1-4d57-4266-9c39-481c2d9c76eq"
+                      }
+                  ],
+                  "recipient": {
+                      "name": "in eiusmod",
+                      "email": "ea eu fugiat",
+                      "phone": "in"
+                  },
+                  "ecommerce_order": "KIOTA-KNN76OP",
+                  "order_type_tag": "fulfillment_order"
+              }
+      tags:
+        - webhooks
+  /webhook-events:
+    get:
+      summary: Get webhook events
+      description: Retrieve a list of all the webhook events that are currently supported.
+      operationId: Getwebhookevents
+      parameters: []
+      responses:
+        '200':
+          description: Indicates successful processing of the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200'
+              example:
+                status: true
+                data:
+                  - id: 1
+                    name: event name
+                  - id: 1
+                    name: event name
+        '500':
+          description: Unexpected error while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+              example:
+                status: false
+                message: nulla laborum
+      tags:
+        - webhooks
+components:
+  parameters:
+    Content-Type:
+      name: Content-Type
+      in: header
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: application/json
+    orderNumber:
+      name: orderNumber
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: nisi esse ut ipsum
+      description: (Required) Unique string identifier for the order.
+    status:
+      name: status
+      in: query
+      required: true
+      style: form
+      schema:
+        type: number
+      description: 1 or 0 boolean representations indicating whether a webhook is active or not.
+  schemas:
+    '200':
+      type: object
+      properties:
+        status:
+          type: boolean
+          description: ''
+          default: true
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              description: ''
+              default: bearer
+            token:
+              type: string
+              description: ''
+              default: b2cf792438cb7a8bff74fd73e75441capU07/mbdn5pagdwDKT2kh2GzbuIopFN7veTckYGsKJIb5MaVtRofKSX7Fmot3LDR
+        message:
+          type: string
+          description: ''
+          default: Tokens generated successfully
+    '201':
+      type: object
+      properties:
+        status: {}
+        message:
+          type: string
+          description: ''
+          default: aute ad adipisicing dolore
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ''
+              default: 1
+            webhook_url:
+              type: string
+              description: ''
+              default: http://apitest.sendyit.com/v2/webhook
+            status:
+              type: string
+              description: ''
+              default: enim veniam do conse
+            webhook_event:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  default: 1
+                name:
+                  type: string
+                  description: ''
+                  default: Delivery Canceled
+    '401':
+      type: object
+      properties:
+        status: {}
+        message:
+          type: string
+          description: ''
+          default: Cannot verify user password
+    '404':
+      type: array
+      items:
+        type: object
+        properties:
+          status:
+            type: boolean
+            description: ''
+            default: true
+          message:
+            type: string
+            description: ''
+            default: in cupi
+    '422':
+      type: object
+      properties:
+        status: {}
+        message:
+          type: string
+          description: ''
+          default: eu aliqua sed aute
+    '500':
+      type: object
+      properties:
+        status: {}
+        message:
+          type: string
+          description: ''
+          default: nulla laborum
+security: []
+tags: []
+externalDocs:
+  url: ''
+  description: ''
