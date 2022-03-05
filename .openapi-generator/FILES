@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .php_cs
 .travis.yml
 README.md
@@ -35,15 +34,3 @@ lib/Model/Model500.php
 lib/Model/ModelInterface.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/ConfigHandshakesApiTest.php
-test/Api/OrderNumberApiTest.php
-test/Api/TokensApiTest.php
-test/Api/WebhooksApiTest.php
-test/Model/200DataTest.php
-test/Model/201DataTest.php
-test/Model/201DataWebhookEventTest.php
-test/Model/Model200Test.php
-test/Model/Model201Test.php
-test/Model/Model401Test.php
-test/Model/Model422Test.php
-test/Model/Model500Test.php

@@ -4,17 +4,27 @@ servers:
     description: ''
     variables: {}
 info:
-  version: de1aa17a-d33f-4aca-9dc5-98822ff83a8f
+  version: 1.0.0
   title: Sendy Public API
-  description: |2
+  description: |-
+    This php API Has been generated after upgrading the provided swagger.json to OpenAPI YML using Postman and API Transform. It has not been tested for compatibility and is provided by a third-party with no warranty, use at your own risk.
 
-      In order to get started with Sendy Public API, you will need to first <a href="https://app.sendyit.com/auth/sign_up">register a business account</a>.<br>
-      Thereafter, <a href="https://app.sendyit.com/auth">login</a> to the Sendy app, create a password and generate a personal access token for API authentication.<br><br>
-      This guide details interfaces that allow you to integrate your own apps with Sendy's services.<br>
-  termsOfService: ''
-  contact: {}
+    ---
+
+    ![Sendy Logo](https://assets.website-files.com/5be92ce6e4a547dcc61b976c/60253f92874eabf1a8ecf88f_Logo_SendyMain_Colored_Normal_SVG.svg)
+
+    In order to get started with Sendy Public API, you will need to first [register a business account](https://app.sendyit.com/auth/sign_up)
+
+    Thereafter, [login](https://app.sendyit.com/auth) to the Sendy app, create a password and generate a personal access token for API authentication.
+
+    This guide details interfaces that allow you to integrate your own apps with Sendy's services.
+  contact:
+    url: 'https://www.sendyit.com/contact-us'
+    name: Sendy HQ – Kenya
   license:
-    name: ''
+    name: APACHE LICENSE, VERSION 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
+  termsOfService: 'https://www.sendyit.com/fulfillment-terms-conditions'
 paths:
   /tokens/generate:
     post:
@@ -74,7 +84,7 @@ paths:
   /tokens/revoke:
     post:
       summary: Revoke tokens
-      description: Revokes token for the authenticated user and expires it, ensuring it can no longer be used to access the API.
+      description: 'Revokes token for the authenticated user and expires it, ensuring it can no longer be used to access the API.'
       operationId: Revoketokens
       parameters:
         - name: Content-Type
@@ -116,7 +126,7 @@ paths:
                 status: false
                 message: eu aliqua sed aute
       requestBody:
-        description: Revokes token for the authenticated user and expires it, ensuring it can no longer be used to access the API.
+        description: 'Revokes token for the authenticated user and expires it, ensuring it can no longer be used to access the API.'
         required: true
         content:
           application/json:
@@ -148,8 +158,8 @@ paths:
               example:
                 status: true
                 reasons: aute eiusmod dolor esse quis
-                generate: http://exampleURL.com
-                verify: http://exampleURL.com
+                generate: 'http://exampleURL.com'
+                verify: 'http://exampleURL.com'
         '401':
           description: The specified resource was not found
           content:
@@ -218,8 +228,8 @@ paths:
             schema:
               type: string
               example:
-                generate: http://exampleURL.com
-                verify: http://exampleURL.com
+                generate: 'http://exampleURL.com'
+                verify: 'http://exampleURL.com'
             example: |-
               {
                   "generate": "http://exampleURL.com",
@@ -275,8 +285,8 @@ paths:
             schema:
               type: string
               example:
-                generate: http://exampleURL.com
-                verify: http://exampleURL.com
+                generate: 'http://exampleURL.com'
+                verify: 'http://exampleURL.com'
             example: |-
               {
                   "generate": "http://exampleURL.com",
@@ -284,10 +294,10 @@ paths:
               }
       tags:
         - config/handshakes
-  /orders/{orderNumber}:
+  '/orders/{orderNumber}':
     get:
       summary: Track an order
-      description: Get details about an order which include tracking details, status, rider details et al.
+      description: 'Get details about an order which include tracking details, status, rider details et al.'
       operationId: Trackanorder
       parameters:
         - $ref: '#/components/parameters/orderNumber'
@@ -319,7 +329,7 @@ paths:
                 message: nulla laborum
       tags:
         - '{order Number}'
-  /orders/{orderNumber}/order-paths:
+  '/orders/{orderNumber}/order-paths':
     get:
       summary: View items/details of an order path
       description: View the items in an order waypoint(s) or path of a given order
@@ -351,7 +361,7 @@ paths:
                         coordinates: '-1.308854,36.856487'
                         name: Industrial Area
                       more:
-                        Address: 138 Likoni Rd, Nairobi, Kenya
+                        Address: '138 Likoni Rd, Nairobi, Kenya'
                         Estate: Not indicated
                         FlatName: NTSA Likoni Road Inspection Centre
                         HouseDoor: Not indicated
@@ -378,24 +388,24 @@ paths:
                             - item_id: ITM82198
                               display_name: 2KG Soko Maize Flour
                               quantity: 12
-                              display_img_link: https://s3.com/sff
+                              display_img_link: 'https://s3.com/sff'
                               description: Ugali tings
                             - item_id: ITM82198
                               display_name: 2KG Soko Maize Flour
                               quantity: 12
-                              display_img_link: https://s3.com/sff
+                              display_img_link: 'https://s3.com/sff'
                               description: Ugali tings
                         - ref_no: PKG1082198
                           checklist_items:
                             - item_id: ITM82198
                               display_name: 2KG Soko Maize Flour
                               quantity: 12
-                              display_img_link: https://s3.com/sff
+                              display_img_link: 'https://s3.com/sff'
                               description: Ugali tings
                             - item_id: ITM82198
                               display_name: 2KG Soko Maize Flour
                               quantity: 12
-                              display_img_link: https://s3.com/sff
+                              display_img_link: 'https://s3.com/sff'
                               description: Ugali tings
                       recipient_name: ut esse enim cupidata
                       recipient_phone: est commodo officia L
@@ -412,7 +422,7 @@ paths:
                         coordinates: '-1.308854,36.856487'
                         name: Industrial Area
                       more:
-                        Address: 138 Likoni Rd, Nairobi, Kenya
+                        Address: '138 Likoni Rd, Nairobi, Kenya'
                         Estate: Not indicated
                         FlatName: NTSA Likoni Road Inspection Centre
                         HouseDoor: Not indicated
@@ -439,24 +449,24 @@ paths:
                             - item_id: ITM82198
                               display_name: 2KG Soko Maize Flour
                               quantity: 12
-                              display_img_link: https://s3.com/sff
+                              display_img_link: 'https://s3.com/sff'
                               description: Ugali tings
                             - item_id: ITM82198
                               display_name: 2KG Soko Maize Flour
                               quantity: 12
-                              display_img_link: https://s3.com/sff
+                              display_img_link: 'https://s3.com/sff'
                               description: Ugali tings
                         - ref_no: PKG1082198
                           checklist_items:
                             - item_id: ITM82198
                               display_name: 2KG Soko Maize Flour
                               quantity: 12
-                              display_img_link: https://s3.com/sff
+                              display_img_link: 'https://s3.com/sff'
                               description: Ugali tings
                             - item_id: ITM82198
                               display_name: 2KG Soko Maize Flour
                               quantity: 12
-                              display_img_link: https://s3.com/sff
+                              display_img_link: 'https://s3.com/sff'
                               description: Ugali tings
                       recipient_name: Duis
                       recipient_phone: non
@@ -491,10 +501,10 @@ paths:
                 message: in esse tempor ut
       tags:
         - '{order Number}'
-  /orders/{orderNumber}/cancel:
+  '/orders/{orderNumber}/cancel':
     post:
       summary: Cancel an order
-      description: Facilitates cancellation of orders. Orders can only be cancelled if they are NOT in transit, NOT delivered or, naturally, NOT already cancelled
+      description: 'Facilitates cancellation of orders. Orders can only be cancelled if they are NOT in transit, NOT delivered or, naturally, NOT already cancelled'
       operationId: Cancelanorder
       parameters:
         - name: orderNumber
@@ -547,7 +557,7 @@ paths:
                 status: false
                 message: {}
       requestBody:
-        description: Facilitates cancellation of orders. Orders can only be cancelled if they are NOT in transit, NOT delivered or, naturally, NOT already cancelled
+        description: 'Facilitates cancellation of orders. Orders can only be cancelled if they are NOT in transit, NOT delivered or, naturally, NOT already cancelled'
         required: true
         content:
           application/json:
@@ -566,7 +576,7 @@ paths:
   /orders:
     post:
       summary: Confirm an order
-      description: Facilitates confirmation of an order after getting a quotation from the price request endpoint, using the pricing UUIDs
+      description: 'Facilitates confirmation of an order after getting a quotation from the price request endpoint, using the pricing UUIDs'
       operationId: Confirmanorder
       parameters:
         - name: Content-Type
@@ -589,7 +599,7 @@ paths:
                 data:
                   order_no: AS137J382-9X7
                   pricing_uuid: {}
-                  tracking_link: https://webapptest.sendyit.com/external/tracking/AS137J382-9X7
+                  tracking_link: 'https://webapptest.sendyit.com/external/tracking/AS137J382-9X7'
                   details:
                     ecommerce_order: kiota_KCON-1136DBJ50
                   time_predictions:
@@ -614,7 +624,7 @@ paths:
                 error: {}
                 message: in esse tempor ut
       requestBody:
-        description: Facilitates confirmation of an order after getting a quotation from the price request endpoint, using the pricing UUIDs
+        description: 'Facilitates confirmation of an order after getting a quotation from the price request endpoint, using the pricing UUIDs'
         required: true
         content:
           application/json:
@@ -637,24 +647,24 @@ paths:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                       - ref_no: PKG1082198
                         checklist_items:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                     notes: 'Please call Philip +254717266700 when you get to the pickup location. ADDITIONAL NOTES: Call Liz'
                   - recipient_phone: '+254792543163'
@@ -665,24 +675,24 @@ paths:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                       - ref_no: PKG1082198
                         checklist_items:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                     notes: 'Please call Philip +254717266700 when you get to the pickup location. ADDITIONAL NOTES: Call Liz'
             example: |-
@@ -820,13 +830,13 @@ paths:
                       name: Nairobi
                     more:
                       Estate: Not indicated
-                      FlatName: Sendy Office, Marsabit Plaza 3rd Floor
+                      FlatName: 'Sendy Office, Marsabit Plaza 3rd Floor'
                       place_idcustom: ChIJhbD6i3EaLxgR4oVQaZO9l-M
                       Label: ''
                       HouseDoor: Not indicated
                       Otherdescription: ''
-                      Typed: Sendy Office, Marsabit Plaza 3rd Floor
-                      Vicinity: Ngong Road, Nairobi
+                      Typed: 'Sendy Office, Marsabit Plaza 3rd Floor'
+                      Vicinity: 'Ngong Road, Nairobi'
                       Address: Ngong Rd Maziwa Nairobi
                       landmark: No landmark
                       viewport:
@@ -836,8 +846,8 @@ paths:
                         southwest:
                           lat: elit sed
                           lng: exer
-                      Road: Marsabit Plaza, Ngong Road
-                    name: Roy Transmotors Ltd, Nairobi, Kenya
+                      Road: 'Marsabit Plaza, Ngong Road'
+                    name: 'Roy Transmotors Ltd, Nairobi, Kenya'
                     notes: HUMAN READABLE INSTRUCTONS
                     notify: true
                     handshake: OTP
@@ -847,24 +857,24 @@ paths:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                       - ref_no: PKG1082198
                         checklist_items:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                     recipient_name: aliquip irure
                     recipient_phone: dolor labore
@@ -885,13 +895,13 @@ paths:
                       name: Nairobi
                     more:
                       Estate: Not indicated
-                      FlatName: Sendy Office, Marsabit Plaza 3rd Floor
+                      FlatName: 'Sendy Office, Marsabit Plaza 3rd Floor'
                       place_idcustom: ChIJhbD6i3EaLxgR4oVQaZO9l-M
                       Label: ''
                       HouseDoor: Not indicated
                       Otherdescription: ''
-                      Typed: Sendy Office, Marsabit Plaza 3rd Floor
-                      Vicinity: Ngong Road, Nairobi
+                      Typed: 'Sendy Office, Marsabit Plaza 3rd Floor'
+                      Vicinity: 'Ngong Road, Nairobi'
                       Address: Ngong Rd Maziwa Nairobi
                       landmark: No landmark
                       viewport:
@@ -901,8 +911,8 @@ paths:
                         southwest:
                           lat: dolor velit labore dolore
                           lng: nisi ut enim eu in
-                      Road: Marsabit Plaza, Ngong Road
-                    name: Roy Transmotors Ltd, Nairobi, Kenya
+                      Road: 'Marsabit Plaza, Ngong Road'
+                    name: 'Roy Transmotors Ltd, Nairobi, Kenya'
                     notes: HUMAN READABLE INSTRUCTONS
                     notify: true
                     handshake: OTP
@@ -912,24 +922,24 @@ paths:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                       - ref_no: PKG1082198
                         checklist_items:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                     recipient_name: par
                     recipient_phone: proident pariatur
@@ -976,7 +986,7 @@ paths:
                 waypoint_instructions:
                   - lng: cillum
                     lat: in sed
-                    location_name: Sendy Office, Marsabit Plaza 3rd Floor
+                    location_name: 'Sendy Office, Marsabit Plaza 3rd Floor'
                     waypoint_type: PICKUP
                     order_items:
                       - ref_no: PKG1082198
@@ -984,24 +994,24 @@ paths:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                       - ref_no: PKG1082198
                         checklist_items:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                     handshake: SIGNATURE
                     recipient_name: John Doe
@@ -1010,7 +1020,7 @@ paths:
                     notify: true
                   - lng: velit elit
                     lat: exercitation dolor voluptate
-                    location_name: Sendy Office, Marsabit Plaza 3rd Floor
+                    location_name: 'Sendy Office, Marsabit Plaza 3rd Floor'
                     waypoint_type: DELIVERY
                     order_items:
                       - ref_no: PKG1082198
@@ -1018,24 +1028,24 @@ paths:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                       - ref_no: PKG1082198
                         checklist_items:
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                           - item_id: ITM82198
                             display_name: 2KG Soko Maize Flour
                             quantity: 12
-                            display_img_link: https://s3.com/sff
+                            display_img_link: 'https://s3.com/sff'
                             description: Ugali tings
                     handshake: SIGNATURE
                     recipient_name: John Doe
@@ -1172,13 +1182,13 @@ paths:
                 status: false
                 data:
                   - id: 1
-                    webhook_url: http://apitest.sendyit.com/v2/webhook
+                    webhook_url: 'http://apitest.sendyit.com/v2/webhook'
                     status: in sed Ut
                     webhook_event:
                       id: 1
                       name: Delivery Canceled
                   - id: 1
-                    webhook_url: http://apitest.sendyit.com/v2/webhook
+                    webhook_url: 'http://apitest.sendyit.com/v2/webhook'
                     status: aute exercitation tempor ea
                     webhook_event:
                       id: 1
@@ -1222,7 +1232,7 @@ paths:
                 message: aute ad adipisicing dolore
                 data:
                   id: 1
-                  webhook_url: http://apitest.sendyit.com/v2/webhook
+                  webhook_url: 'http://apitest.sendyit.com/v2/webhook'
                   status: enim veniam do conse
                   webhook_event:
                     id: 1
@@ -1273,7 +1283,7 @@ paths:
               type: string
               example:
                 webhook_event_id: 2
-                webhook_log_url: http://example-server.com/log
+                webhook_log_url: 'http://example-server.com/log'
             example: |-
               {
                   "webhook_event_id": 2,
@@ -1305,7 +1315,7 @@ paths:
                 message: aute ad adipisicing dolore
                 data:
                   id: 1
-                  webhook_url: http://apitest.sendyit.com/v2/webhook
+                  webhook_url: 'http://apitest.sendyit.com/v2/webhook'
                   status: enim veniam do conse
                   webhook_event:
                     id: 1
@@ -1524,7 +1534,7 @@ paths:
                   client_id: 669
                   cost: 0
                   path:
-                    - name: 2nd Avenue,14th Street, Eastleigh
+                    - name: '2nd Avenue,14th Street, Eastleigh'
                       waypoint_id: aed2b980-ce2f-4b4f-be7f-6fe01ead9f5c
                       waypoint_type: PICKUP
                       coordinates: '-1.280794,36.8520048'
@@ -1533,7 +1543,7 @@ paths:
                       city_name: Nairobi County
                       locality: {}
                       more: {}
-                    - name: 2nd Avenue,14th Street, Eastleigh
+                    - name: '2nd Avenue,14th Street, Eastleigh'
                       waypoint_id: aed2b980-ce2f-4b4f-be7f-6fe01ead9f5c
                       waypoint_type: PICKUP
                       coordinates: '-1.280794,36.8520048'
@@ -1689,11 +1699,11 @@ paths:
                   from_details: {}
                   to_details: {}
                   from_details_status: true
-                  from_name: 2nd Avenue,14th Street, Eastleigh
+                  from_name: '2nd Avenue,14th Street, Eastleigh'
                   to_name: Kawangware 46
                   to_details_status: false
-                  start_address: Behind Sky Blue Lodge, Eastleigh Second Avenue, Nairobi, Kenya
-                  end_address: Kawangware 46, Nairobi, Kenya
+                  start_address: 'Behind Sky Blue Lodge, Eastleigh Second Avenue, Nairobi, Kenya'
+                  end_address: 'Kawangware 46, Nairobi, Kenya'
                   errand_mode: one_way
                   errand_cost_id: 0
                   delivery_instructions: {}
@@ -1758,12 +1768,12 @@ paths:
                   - type: PICKUP
                     lat: reprehenderit et
                     long: irure proident adipisicing
-                    name: Sendy Office, Marsabit Plaza 3rd Floor
+                    name: 'Sendy Office, Marsabit Plaza 3rd Floor'
                     waypoint_id: d67dbff1-4d57-4266-9c39-481c2d9c76eq
                   - type: PICKUP
                     lat: dolor consequat commodo incididunt
                     long: eu o
-                    name: Sendy Office, Marsabit Plaza 3rd Floor
+                    name: 'Sendy Office, Marsabit Plaza 3rd Floor'
                     waypoint_id: d67dbff1-4d57-4266-9c39-481c2d9c76eq
                 recipient:
                   name: in eiusmod
@@ -1898,7 +1908,7 @@ components:
             webhook_url:
               type: string
               description: ''
-              default: http://apitest.sendyit.com/v2/webhook
+              default: 'http://apitest.sendyit.com/v2/webhook'
             status:
               type: string
               description: ''
@@ -1956,3 +1966,4 @@ tags: []
 externalDocs:
   url: ''
   description: ''
+x-logo: 'https://assets.website-files.com/5be92ce6e4a547dcc61b976c/60253f92874eabf1a8ecf88f_Logo_SendyMain_Colored_Normal_SVG.svg'
